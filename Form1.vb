@@ -5,54 +5,57 @@
         Dim skipped As New List(Of String)
         Dim notfound As New List(Of String)
         Dim issues As New List(Of String)
+        If IO.Directory.Exists(TextBox1.Text) Then
 
-        Dim fsentries As String() = IO.Directory.GetFiles(TextBox1.Text, "*.*", System.IO.SearchOption.AllDirectories)
+            Dim fsentries As String() = IO.Directory.GetFiles(TextBox1.Text, "*.*", System.IO.SearchOption.TopDirectoryOnly)
 
-        For Each line As String In FileBox.Lines
-            line = line.Trim
-            If line.Length > 0 Then
+            For Each line As String In FileBox.Lines
+                line = line.Trim
+                If line.Length > 0 Then
 
-                If line.Contains(".") And Not line.Contains("/") And Not line.Contains("\") Then
-                    Dim local_line As String = line
+                    If line.Contains(".") And Not line.Contains("/") And Not line.Contains("\") Then
+                        Dim local_line As String = line
 
-                    Dim listed As Boolean = fsentries.Where(Function(a) a.EndsWith("\" & local_line)).Count > 0
-                    Dim exists As Boolean = System.IO.File.Exists(TextBox1.Text & line)
+                        Dim listed As Boolean = fsentries.Where(Function(a) a.EndsWith("\" & local_line)).Count > 0
+                        Dim exists As Boolean = System.IO.File.Exists(TextBox1.Text & line)
 
-                    If Not listed And Not exists Then
-                        notfound.Add(line)
-                    ElseIf Not listed Then
-                        issues.Add(line)
+                        If Not listed And Not exists Then
+                            notfound.Add(line)
+                        ElseIf Not listed Then
+                            issues.Add(line)
+                        End If
+
+                    Else
+                        skipped.Add(line)
                     End If
-
-                Else
-                    skipped.Add(line)
                 End If
+            Next
+
+            TextErrors.Text = ""
+            If notfound.Count > 0 Then
+                TextErrors.Text &= "---Not Found---" & vbCrLf
+                TextErrors.Text &= Join(notfound.ToArray, vbCrLf)
+                TextErrors.Text &= vbCrLf & vbCrLf
             End If
-        Next
 
-        TextErrors.Text = ""
-        If notfound.Count > 0 Then
-            TextErrors.Text &= "---Not Found---" & vbCrLf
-            TextErrors.Text &= Join(notfound.ToArray, vbCrLf)
-            TextErrors.Text &= vbCrLf & vbCrLf
+            If skipped.Count > 0 Then
+                TextErrors.Text &= "---Skipped---" & vbCrLf
+                TextErrors.Text &= Join(skipped.ToArray, vbCrLf)
+                TextErrors.Text &= vbCrLf & vbCrLf
+            End If
+
+            If issues.Count > 0 Then
+                TextErrors.Text &= "---Capitilization Mismatch---" & vbCrLf
+                TextErrors.Text &= Join(issues.ToArray, vbCrLf)
+                TextErrors.Text &= vbCrLf & vbCrLf
+            End If
+
+            If TextErrors.Text.Trim.Length = 0 Then
+                TextErrors.Text = "No Issues, Woohoo!!!"
+            End If
+        Else
+            MsgBox("Path """ & TextBox1.Text & """ Not Found")
         End If
-
-        If skipped.Count > 0 Then
-            TextErrors.Text &= "---Skipped---" & vbCrLf
-            TextErrors.Text &= Join(skipped.ToArray, vbCrLf)
-            TextErrors.Text &= vbCrLf & vbCrLf
-        End If
-
-        If issues.Count > 0 Then
-            TextErrors.Text &= "---Capitilization Mismatch---" & vbCrLf
-            TextErrors.Text &= Join(issues.ToArray, vbCrLf)
-            TextErrors.Text &= vbCrLf & vbCrLf
-        End If
-
-        If TextErrors.Text.Trim.Length = 0 Then
-            TextErrors.Text = "No Issues, Woohoo!!!"
-        End If
-
 
     End Sub
 
