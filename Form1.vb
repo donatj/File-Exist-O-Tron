@@ -1,7 +1,7 @@
 ﻿Public Class Form1
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-
+        TextBox1_Leave(sender, e)
         Dim skipped As New List(Of String)
         Dim notfound As New List(Of String)
         Dim issues As New List(Of String)
@@ -16,7 +16,7 @@
                     If line.Contains(".") And Not line.Contains("/") And Not line.Contains("\") Then
                         Dim local_line As String = line
 
-                        Dim listed As Boolean = fsentries.Where(Function(a) a.EndsWith("\" & local_line)).Count > 0
+                        Dim listed As Boolean = fsentries.Where(Function(a) a.EndsWith("\" & local_line, False, System.Globalization.CultureInfo.CurrentCulture)).Count > 0
                         Dim exists As Boolean = System.IO.File.Exists(TextBox1.Text & line)
 
                         If Not listed And Not exists Then
