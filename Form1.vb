@@ -67,17 +67,12 @@
         FileBox.Text = My.Settings.LastFiles
     End Sub
 
-    Private Sub TextErrors_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextErrors.TextChanged
-
-    End Sub
-
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         FolderBrowserDialog1.ShowDialog()
         TextBox1.Text = FolderBrowserDialog1.SelectedPath
     End Sub
 
-
-    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
+    Private Sub TextBox1_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles TextBox1.Leave
         If Not TextBox1.Text.EndsWith("\") Then
             TextBox1.Text &= "\"
         End If
@@ -89,7 +84,9 @@
         My.Settings.LastPath = TextBox1.Text
     End Sub
 
-    Private Sub FileBox_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FileBox.TextChanged
+    Public Sub ClosingApp() Handles Me.FormClosing
+        My.Settings.LastPath = TextBox1.Text
         My.Settings.LastFiles = FileBox.Text
     End Sub
+
 End Class
