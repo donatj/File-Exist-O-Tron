@@ -57,9 +57,12 @@ Partial Class Form1
         Me.TextErrors.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TextErrors.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextErrors.Location = New System.Drawing.Point(282, 67)
         Me.TextErrors.Multiline = True
         Me.TextErrors.Name = "TextErrors"
+        Me.TextErrors.ReadOnly = True
+        Me.TextErrors.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.TextErrors.Size = New System.Drawing.Size(370, 424)
         Me.TextErrors.TabIndex = 2
         '
@@ -93,6 +96,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.FileBox)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MinimumSize = New System.Drawing.Size(600, 500)
         Me.Name = "Form1"
         Me.Text = "FileExist-O-Tron"
         Me.ResumeLayout(False)
