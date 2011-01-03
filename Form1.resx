@@ -117,34 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FileBox.Text" xml:space="preserve">
-    <value>WCGENPO-0407_P02_03.jpg	
-WCGENPO-0407_P07_02.jpg	
-WCBUILD-0408IE_P05_01.jpg	
-WCGENPO-0407_P13_03.jpg	
-WCGENPO-0407_P09_01.jpg	
-WCGENPO-0407_P02_04.jpg	
-5258-01.jpg	
-Multilathe.jpg	
-1-WCGENPO-0407_P24_02.jpg	
-1-ACCOMPO-1008IE_P08_02.jpg	
-1-ACCOMPO-1008IE_P04_03.jpg	
-1-3618 ACAEROS-0609E_P12_03.jpg	
-1-ACAEROS-0609E_P12_02.jpg	
-1-MBB.jpg	
-1-3561.jpg	
-1-TP-ATC-Multiples.jpg	
-Concept 173.jpg	
-Flexa.jpg	
-Sprint AC.jpg	
-MAXIMA TWIN.JPG	
-VNT Pic 2.jpg	
-TI 1.25.jpg	
-Agil.jpg	
-VERTEC.jpg	
-Asset.JPG	
-</value>
-  </data>
   <metadata name="FolderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
