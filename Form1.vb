@@ -68,6 +68,9 @@
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        If IO.Directory.Exists(TextBox1.Text) Then
+            FolderBrowserDialog1.SelectedPath = TextBox1.Text
+        End If
         FolderBrowserDialog1.ShowDialog()
         TextBox1.Text = FolderBrowserDialog1.SelectedPath
     End Sub
