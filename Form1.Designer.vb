@@ -29,6 +29,7 @@ Partial Class Form1
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.BtnClearList = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'FileBox
@@ -38,9 +39,9 @@ Partial Class Form1
         Me.FileBox.Location = New System.Drawing.Point(12, 12)
         Me.FileBox.Multiline = True
         Me.FileBox.Name = "FileBox"
-        Me.FileBox.Size = New System.Drawing.Size(264, 479)
+        Me.FileBox.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.FileBox.Size = New System.Drawing.Size(264, 454)
         Me.FileBox.TabIndex = 0
-        Me.FileBox.Text = resources.GetString("FileBox.Text")
         '
         'Button1
         '
@@ -85,11 +86,22 @@ Partial Class Form1
         Me.Button2.Text = "Browse"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'BtnClearList
+        '
+        Me.BtnClearList.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.BtnClearList.Location = New System.Drawing.Point(12, 472)
+        Me.BtnClearList.Name = "BtnClearList"
+        Me.BtnClearList.Size = New System.Drawing.Size(264, 19)
+        Me.BtnClearList.TabIndex = 5
+        Me.BtnClearList.Text = "Clear List"
+        Me.BtnClearList.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(664, 503)
+        Me.Controls.Add(Me.BtnClearList)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.TextErrors)
@@ -109,5 +121,6 @@ Partial Class Form1
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
     Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents BtnClearList As System.Windows.Forms.Button
 
 End Class

@@ -21,6 +21,7 @@
 
                         If Not listed And Not exists Then
                             notfound.Add(line)
+                            Console.WriteLine()
                         ElseIf Not listed Then
                             issues.Add(line)
                         End If
@@ -92,4 +93,31 @@
         My.Settings.LastFiles = FileBox.Text
     End Sub
 
+    Private Sub FileBox_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles FileBox.KeyPress
+        If e.KeyChar = Convert.ToChar(1) Then
+            DirectCast(sender, TextBox).SelectAll()
+            e.Handled = True
+        End If
+
+    End Sub
+
+    Private Sub FileBox_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FileBox.TextChanged
+        Dim hold As String
+
+        For Each line As String In FileBox.Lines
+
+            line = line.Trim
+            If line <> "" Then
+                hold &= line & vbCrLf
+            End If
+
+        Next
+
+        FileBox.Text = hold
+
+    End Sub
+
+    Private Sub BtnClearList_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnClearList.Click
+        FileBox.Clear()
+    End Sub
 End Class
